@@ -1,0 +1,30 @@
+{
+  "name": "learning-namaste-react",
+  "version": "1.0.0",
+  "description": "This is namaste react by Akshay Saini",
+  "main": "App.js",
+  "targets": {
+    "main": false
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/safi-is-coding/Learning-React-Akshay-Saini.git"
+  },
+  "keywords": [],
+  "author": "Safi Maz",
+  "license": "ISC",
+  "dependencies": {
+    "learning-namaste-react": "file:",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "parcel": "^2.15.1"
+  },
+  "browserlist": [
+    "last 2 versions"
+  ]
+}

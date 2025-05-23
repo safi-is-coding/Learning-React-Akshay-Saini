@@ -1,11 +1,5 @@
-const heading = React.createElement(
-    "h1", // tag name
-    { id: "heading" }, //attributes 
-    "Hello World from React" // value
-)
-
-console.log(heading); // object
-
+import React from "react";
+import ReactDOM from "react-dom/client"
 
 const parent = React.createElement(
     "div",
@@ -14,7 +8,7 @@ const parent = React.createElement(
         React.createElement(
             "div",
             { id: "child" },
-            [React.createElement("h1", {}, "I am a h1 child"), React.createElement("h2", {}, "I am a h2 child")]
+            [React.createElement("h1", {}, "I'm from namaste React"), React.createElement("h2", {}, "I am a h2 child")]
         ),
 
         React.createElement(
