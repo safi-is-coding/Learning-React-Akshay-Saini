@@ -1,25 +1,36 @@
 import React from "react";
 import ReactDOM from "react-dom/client"
 
-const parent = React.createElement(
-    "div",
-    { id: "parent" },
-    [
-        React.createElement(
-            "div",
-            { id: "child" },
-            [React.createElement("h1", {}, "I'm from namaste React"), React.createElement("h2", {}, "I am a h2 child")]
-        ),
+// React ELement
+const heading = React.createElement("h1", {id:"heading"}, "Namaste React")
+console.log(heading)
 
-        React.createElement(
-            "div",
-            { id: "child2" },
-            [React.createElement("h1", {}, "I am a h1 child"), React.createElement("h2", {}, "I am a h2 child")]
-        )
-    ]
-);
+// React ELement
+const title =  (
+    <h1 id="heading">
+        Namaste React from React Element
+    </h1>
+)
 
+const Title = () => (
+    <h1 id="heading">
+        Namaste React from Title React Component
+    </h1>
+)
 
-const root = ReactDOM.createRoot(document.getElementById('root'))
+const number = 1000
 
-root.render(parent) // take the object and convert it to html tag 
+// React Component
+const HeadingComponent = () => (
+    <div className="container">
+        <Title/>
+
+        <h2> {title} </h2>
+
+        <h1>Namaste React from Heading React Component</h1>
+    </div>
+)
+
+const root = ReactDOM.createRoot(document.getElementById("root"))
+
+root.render(<HeadingComponent/>)
