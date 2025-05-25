@@ -23,7 +23,7 @@ body{
 .nav-items > ul{
     display: flex;
     list-style-type: none;
-
+    cursor: pointer;
     
 }
 .nav-items > ul > li {
@@ -72,7 +72,7 @@ body{
         background-color: #f0f0f0;
         padding: 10px;
         border-radius: 10px;
-
+        cursor: pointer;
     
         .res-img{
             width: 100%;
@@ -99,6 +99,28 @@ body{
                 font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             }
             
+        }
+    }
+
+    .filter{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        margin-top: 20px;
+
+        button{
+            padding: 10px 20px;
+            font-size: 1rem;
+            background-color: rgb(121, 219, 255);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: -2px 2px 0 0 black;
+
+            &:hover{
+                background-color: rgb(83, 209, 255);
+            }
         }
     }
 
