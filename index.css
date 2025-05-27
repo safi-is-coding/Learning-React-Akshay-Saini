@@ -25,6 +25,18 @@ body{
     list-style-type: none;
     cursor: pointer;
     
+    button{
+        padding: 10px 20px;
+        margin: 10px;
+        font-size: 1rem;
+        border: 1px solid black;
+        box-shadow: -5px 5px 0 0 black;
+        border-radius: 10px;
+        text-align: center;
+        color: white;
+        cursor: pointer;
+        
+    }
 }
 .nav-items > ul > li {
     padding: 10px 20px;
@@ -62,11 +74,20 @@ body{
     .search{
         padding: 10px;
     }
+
+    .res-container{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 3rem;
+        width: 90vw;
+    }
     
     .res-card{
         color: black;
-        width: 200px;
-        height: 300px;
+        width: 300px;
+        height: 350px;
         border: 2px solid black;
         box-shadow: -5px 5px 0 0 black;
         background-color: #f0f0f0;
@@ -76,7 +97,7 @@ body{
     
         .res-img{
             width: 100%;
-            height: 150px;
+            height: 200px;
             border-radius: 10px;
             border: 2px solid black;
         }
@@ -86,20 +107,28 @@ body{
             display: flex;
             flex-direction: column;
             gap: 2px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
         
-            h3{
+            .item-name{
                 color: blueviolet;
                 font-weight: bold;
                 text-decoration: underline;
+
             }
 
             p{
                 font-size: 0.9rem;
-                color: rgb(37, 37, 37);
-                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             }
-            
+            .item-desc{
+                color: gray;
+            }
+            .restro-name{
+                color: crimson;
+                font-weight: bold;
+                font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            }
         }
+        
     }
 
     .filter{

@@ -1,18 +1,57 @@
 import RestroCard from "./RestroCard";
-import resList from "../utils/mockData";
+import Shimmer from "./Shimmer";
+// import resList from "../utils/mockData";
 
-import { useState } from 'react'
+import { use, useEffect, useState } from 'react'
 
 const Body = () => {
 
-    const [listOfRestro, setListOfResto] = useState(resList)
+    const [listOfRestro, setListOfRestro] = useState([])
+    const [filteredRestro, setFilteredRestro] = useState([])
+    const [searchText, setSearchText] = useState("")
 
-    
-    return (
+    useEffect(()=> {
+        // console.log("useeffect called");
+        fetchData()
+    }, [])
+
+
+    const fetchData = async () => {
+        const data = await fetch("https://fakerestaurantapi.runasp.net/api/Restaurant/items")
+
+        const jsonData = await data.json();
+        // console.log(jsonData);
+        // console.log(jsonData.
+        setListOfRestro(jsonData)
+        setFilteredRestro(jsonData)
+    }
+ 
+    // conditional rendering using terinary operator
+    return listOfRestro.length === 0 ? <Shimmer/> : (
         <div className="body">
             <div className="search-container">
-                <input type="text" placeholder="Search for restaurants, dishes, etc." className="search"/>
-                <button className="search-btn">Search</button>
+                <input 
+                    type="text" 
+                    placeholder="Search for restaurants, dishes, etc." 
+                    className="search" 
+                    value={searchText}
+                    onChange={(e)=> {
+                        setSearchText(e.target.value)
+                        // console.log(searchText);
+                    }}
+                
+                />
+                <button 
+                    className="search-btn" 
+                    onClick={() => {
+                        // console.log(searchText);
+                        const filteredRestro = listOfRestro.filter((res) => res.itemName.toLowerCase().includes(searchText.toLowerCase()))
+                        // console.log(filteredRestro);
+                        setFilteredRestro(filteredRestro)
+                    }}
+                >
+                    Search
+                </button>
             </div>
             <div className="filter">
                 <button 
@@ -21,37 +60,23 @@ const Body = () => {
                     onClick={ () => {
                         // filter logic
 
-                        const filteredList = listOfRestro.filter((res) => res.info.avgRating > 4.5)
+                        const filteredList = listOfRestro.filter((res) => res.itemPrice > 500 )
 
-                        setListOfResto(filteredList)
+                        setFilteredRestro(filteredList)
                         
                         // console.log(listOfRestro);
                     } }
                    
                 >
-                    Top Rated Restraunts
+                    Food Above Rs. 500
                 </button>
 
-                <button
-                    className="filter-btn"
-                    
-                    onClick={ ()=> {
-                        setListOfResto(resList)
-                    }}
-                >
-                    All Restro Cards
-                </button>
             </div>
             <div className="res-container">
 
-                {/* {
-                    resList.map((restro) => <RestroCard key={restro.info.id} resData={restro} />)
-
-                } */}
-
                 {
-                    listOfRestro.map( (res) => 
-                        <RestroCard key={res.info.id} resData={res} />
+                    filteredRestro.map( (res) => 
+                        <RestroCard key={res.itemID} resData={res} />
                     )
                 }
 
