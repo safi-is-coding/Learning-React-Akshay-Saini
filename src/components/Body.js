@@ -2,7 +2,7 @@ import RestroCard from "./RestroCard";
 import Shimmer from "./Shimmer";
 // import resList from "../utils/mockData";
 
-import { use, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const Body = () => {
 
@@ -17,13 +17,16 @@ const Body = () => {
 
 
     const fetchData = async () => {
-        const data = await fetch("https://fakerestaurantapi.runasp.net/api/Restaurant/items")
+        const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.8045665&lng=86.2028754&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING")
 
         const jsonData = await data.json();
-        // console.log(jsonData);
+        console.log(jsonData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+
+        // ?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+
         // console.log(jsonData.
-        setListOfRestro(jsonData)
-        setFilteredRestro(jsonData)
+        setListOfRestro(jsonData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+        setFilteredRestro(jsonData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
     }
  
     // conditional rendering using terinary operator
@@ -45,7 +48,7 @@ const Body = () => {
                     className="search-btn" 
                     onClick={() => {
                         // console.log(searchText);
-                        const filteredRestro = listOfRestro.filter((res) => res.itemName.toLowerCase().includes(searchText.toLowerCase()))
+                        const filteredRestro = listOfRestro.filter((res) => res?.info?.name.toLowerCase().includes(searchText.toLowerCase()))
                         // console.log(filteredRestro);
                         setFilteredRestro(filteredRestro)
                     }}
@@ -60,7 +63,7 @@ const Body = () => {
                     onClick={ () => {
                         // filter logic
 
-                        const filteredList = listOfRestro.filter((res) => res.itemPrice > 500 )
+                        const filteredList = listOfRestro.filter((res) => res.info.avgRating > 4.5 )
 
                         setFilteredRestro(filteredList)
                         
@@ -68,7 +71,7 @@ const Body = () => {
                     } }
                    
                 >
-                    Food Above Rs. 500
+                    Rating Above 4.5
                 </button>
 
             </div>
@@ -76,7 +79,7 @@ const Body = () => {
 
                 {
                     filteredRestro.map( (res) => 
-                        <RestroCard key={res.itemID} resData={res} />
+                        <RestroCard key={res.info.id} resData={res} />
                     )
                 }
 

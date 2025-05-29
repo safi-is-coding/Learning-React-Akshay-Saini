@@ -6,6 +6,7 @@
 
 body{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: beige;
 }
 
 .header{
@@ -90,16 +91,22 @@ body{
         height: 350px;
         border: 2px solid black;
         box-shadow: -5px 5px 0 0 black;
-        background-color: #f0f0f0;
+        background-color: whitesmoke;
         padding: 10px;
         border-radius: 10px;
         cursor: pointer;
+        transition: transform 0.3s ease-in-out;
+
     
         .res-img{
             width: 100%;
             height: 200px;
             border-radius: 10px;
             border: 2px solid black;
+            transition: transform 0.3s ease-in-out;
+        }
+        .res-img:hover{
+            border: 5px solid black;
         }
     
         .details{
@@ -109,7 +116,7 @@ body{
             gap: 2px;
             font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
         
-            .item-name{
+            .res-name{
                 color: blueviolet;
                 font-weight: bold;
                 text-decoration: underline;
@@ -119,16 +126,19 @@ body{
             p{
                 font-size: 0.9rem;
             }
-            .item-desc{
+            .res-rating{
                 color: gray;
             }
-            .restro-name{
+            .res-areaName{
                 color: crimson;
                 font-weight: bold;
                 font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
             }
         }
         
+    }
+    .res-card:hover{
+        box-shadow: -2px 2px 0 0 black;
     }
 
     .filter{
