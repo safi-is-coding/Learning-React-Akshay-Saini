@@ -1,6 +1,7 @@
 import RestroCard from "./RestroCard";
 import Shimmer from "./Shimmer";
 // import resList from "../utils/mockData";
+import { Link } from "react-router-dom";
 
 import { useEffect, useState } from 'react'
 
@@ -17,7 +18,7 @@ const Body = () => {
 
 
     const fetchData = async () => {
-        const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.8045665&lng=86.2028754&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING")
+        const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9352403&lng=77.624532&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING")
 
         const jsonData = await data.json();
         console.log(jsonData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
@@ -79,7 +80,7 @@ const Body = () => {
 
                 {
                     filteredRestro.map( (res) => 
-                        <RestroCard key={res.info.id} resData={res} />
+                      <Link to= {"/restaurant/" + res.info.id} key={res.info.id} ><RestroCard resData={res} /></Link>
                     )
                 }
 
