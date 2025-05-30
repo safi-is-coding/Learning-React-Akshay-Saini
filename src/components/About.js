@@ -1,10 +1,17 @@
+import User from "./User";
+import UserClass from "./UserClass";
+
 const About = () => {
     return (
         <div className="about">
             <h1>About Us</h1>
-            <p>We are a company dedicated to providing the best services to our customers.</p>
-            <p>Our mission is to deliver quality and excellence in everything we do.</p>
-            <p>Contact us for more information!</p>
+
+            <div className="user-cards-container">
+                <User name="Safi Maz" location="Jamshedpur" />
+                <UserClass name="Maz Safi" location="Ranchi" />
+
+            </div>
+
         </div>
     );
 }
