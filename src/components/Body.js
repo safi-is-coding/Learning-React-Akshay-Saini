@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 
 import { useEffect, useState } from 'react'
 
+import useOnlineStatus from "../utils/useOnlineStatus";
+
 const Body = () => {
 
     const [listOfRestro, setListOfRestro] = useState([])
@@ -21,7 +23,7 @@ const Body = () => {
         const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9352403&lng=77.624532&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING")
 
         const jsonData = await data.json();
-        console.log(jsonData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        // console.log(jsonData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
 
         // ?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
 
@@ -29,6 +31,12 @@ const Body = () => {
         setListOfRestro(jsonData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
         setFilteredRestro(jsonData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
     }
+
+    const onlineStatus = useOnlineStatus()
+    if(onlineStatus === false) 
+    return (
+        <h1>Looks like you are Offline !! Please check your internet connection...</h1>
+    )
  
     // conditional rendering using terinary operator
     return listOfRestro.length === 0 ? <Shimmer/> : (
@@ -80,7 +88,9 @@ const Body = () => {
 
                 {
                     filteredRestro.map( (res) => 
-                      <Link to= {"/restaurant/" + res.info.id} key={res.info.id} ><RestroCard resData={res} /></Link>
+                        <Link to= {"/restaurant/" + res.info.id} key={res.info.id}>
+                            <RestroCard resData={res} />
+                        </Link>
                     )
                 }
 

@@ -5,7 +5,8 @@ const RestroCard = (props) => {
 
   const { resData } = props;
 
-  const { cloudinaryImageId, name, sla, avgRating, areaName, cuisines } = resData?.info;
+  const { cloudinaryImageId, name, sla, avgRating, areaName, cuisines } =
+    resData?.info;
 
   return (
     <div className="res-card">
